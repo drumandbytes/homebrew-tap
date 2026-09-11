@@ -1,0 +1,79 @@
+name: Update OmniRoute Cask
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Daily at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-cask:
+    name: Check & Update OmniRoute
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for updates
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          CASK_FILE="Casks/omniroute.rb"
+          CURRENT_VER=$(grep -E '^\s*version\s+"' "$CASK_FILE" | sed -E 's/.*"([^"]+)".*/\1/')
+          echo "Current version in cask: $CURRENT_VER"
+
+          RELEASE_JSON=$(gh release view -R diegosouzapw/OmniRoute --json tagName,assets)
+          LATEST_TAG=$(echo "$RELEASE_JSON" | jq -r '.tagName')
+          LATEST_VER="${LATEST_TAG#v}"
+          echo "Latest upstream version: $LATEST_VER"
+
+          if [ "$CURRENT_VER" = "$LATEST_VER" ]; then
+            echo "OmniRoute is up to date ($CURRENT_VER)."
+            echo "updated=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "New release found: $LATEST_VER (current: $CURRENT_VER)"
+          ARM64_ASSET="OmniRoute-${LATEST_VER}-arm64.dmg"
+          INTEL_ASSET="OmniRoute-${LATEST_VER}.dmg"
+
+          ARM64_SHA=$(echo "$RELEASE_JSON" | jq -r --arg name "$ARM64_ASSET" '.assets[] | select(.name == $name) | .digest // empty' | sed 's/^sha256://')
+          INTEL_SHA=$(echo "$RELEASE_JSON" | jq -r --arg name "$INTEL_ASSET" '.assets[] | select(.name == $name) | .digest // empty' | sed 's/^sha256://')
+
+          if [ -z "$ARM64_SHA" ]; then
+            echo "Downloading $ARM64_ASSET to compute sha256..."
+            gh release download "v${LATEST_VER}" -R diegosouzapw/OmniRoute -p "$ARM64_ASSET" -O /tmp/arm64.dmg
+            ARM64_SHA=$(sha256sum /tmp/arm64.dmg | awk '{print $1}')
+            rm -f /tmp/arm64.dmg
+          fi
+
+          if [ -z "$INTEL_SHA" ]; then
+            echo "Downloading $INTEL_ASSET to compute sha256..."
+            gh release download "v${LATEST_VER}" -R diegosouzapw/OmniRoute -p "$INTEL_ASSET" -O /tmp/intel.dmg
+            INTEL_SHA=$(sha256sum /tmp/intel.dmg | awk '{print $1}')
+            rm -f /tmp/intel.dmg
+          fi
+
+          echo "ARM64 SHA: $ARM64_SHA"
+          echo "Intel SHA: $INTEL_SHA"
+
+          sed -i -E "s/(version \")[^\"]+(\")/\1${LATEST_VER}\2/" "$CASK_FILE"
+          sed -i -E "s/(sha256 arm:\s+\")[^\"]+(\")/\1${ARM64_SHA}\2/" "$CASK_FILE"
+          sed -i -E "s/(intel:\s+\")[^\"]+(\")/\1${INTEL_SHA}\2/" "$CASK_FILE"
+
+          echo "updated=true" >> "$GITHUB_OUTPUT"
+          echo "version=$LATEST_VER" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push changes
+        if: steps.check.outputs.updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Casks/omniroute.rb
+          git commit -m "chore(cask): bump omniroute to ${{ steps.check.outputs.version }}"
+          git push
