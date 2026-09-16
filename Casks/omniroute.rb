@@ -28,11 +28,11 @@ cask "omniroute" do
   # after postflight regardless) — you'll still get the normal one-time
   # "unidentified developer" Gatekeeper prompt on first launch, same as any
   # other non-Developer-ID-signed app; that one has a right-click-Open bypass.
-  postflight do
-    system_command "/usr/bin/codesign",
-                   args: ["--remove-signature", "#{appdir}/OmniRoute.app"]
-    system_command "/usr/bin/codesign",
-                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/OmniRoute.app"]
+  postflight_steps do
+    run "/usr/bin/codesign",
+        args: ["--remove-signature", "{{appdir}}/OmniRoute.app"]
+    run "/usr/bin/codesign",
+        args: ["--force", "--deep", "--sign", "-", "{{appdir}}/OmniRoute.app"]
   end
 
   zap trash: [
