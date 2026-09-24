@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          persist-credentials: true  # this workflow pushes with the checkout's credentials
 
       - name: Check for updates
         id: check
