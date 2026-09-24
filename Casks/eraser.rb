@@ -25,7 +25,7 @@ cask "eraser" do
 
   name "eraser"
   desc "Send data removal requests to data brokers"
-  homepage "https://eraser.drumandbytes.dev"
+  homepage "https://eraser.drumandbytes.dev/"
 
   livecheck do
     skip "Auto-generated on release."
