@@ -20,14 +20,8 @@ cask "omniroute" do
 
   app "OmniRoute.app"
 
-  # Upstream ships the app with a broken code signature (resource seal
-  # doesn't match what the signature claims) — Gatekeeper reports it as
-  # "damaged, move to Trash" with no bypass. Re-sign it locally so it opens;
-  # harmless since this runs after the pinned sha256 already verified the
-  # download. This doesn't touch quarantine (Homebrew reasserts that itself
-  # after postflight regardless) — you'll still get the normal one-time
-  # "unidentified developer" Gatekeeper prompt on first launch, same as any
-  # other non-Developer-ID-signed app; that one has a right-click-Open bypass.
+  # Upstream signature is broken ("damaged, move to Trash", no bypass).
+  # Ad-hoc re-sign after the sha256 check; the usual first-launch prompt stays.
   postflight_steps do
     run "/usr/bin/codesign",
         args: ["--remove-signature", "{{appdir}}/OmniRoute.app"]
