@@ -11,7 +11,7 @@ brew tap drumandbytes/tap
 ## Available Casks
 
 ### eraser
-Send data removal requests to data brokers ([eraser.drumandbytes.dev](https://eraser.drumandbytes.dev))
+Send data removal requests to data brokers ([eraser.drumandbytes.dev](https://eraser.drumandbytes.dev/?ref=homebrew-tap-readme))
 
 ```bash
 brew install --cask drumandbytes/tap/eraser
