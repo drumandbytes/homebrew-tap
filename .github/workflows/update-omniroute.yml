@@ -13,9 +13,18 @@ jobs:
     name: Check & Update OmniRoute
     runs-on: ubuntu-latest
     steps:
+      # dnb-robot bypasses the main ruleset; GITHUB_TOKEN can't push to main.
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app_token
+        with:
+          client-id: ${{ secrets.DNB_ROBOT_CLIENT_ID }}
+          private-key: ${{ secrets.AUTOMATION_APP_PRIVATE_KEY }}
+          permission-contents: write
+
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
+          token: ${{ steps.app_token.outputs.token }}
           persist-credentials: true  # this workflow pushes with the checkout's credentials
 
       - name: Check for updates
