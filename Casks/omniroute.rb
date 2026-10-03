@@ -1,9 +1,9 @@
 cask "omniroute" do
   arch arm: "-arm64"
 
-  version "3.8.50"
-  sha256 arm:   "2babe5e5cd983ea290fa816189cf7ca49fad230c59f6f790b99683e454305d4b",
-         intel: "db4897bf300bda63dc8613097bd0fdb69e38dc925751bf18c951e1190eb4f02f"
+  version "3.8.51"
+  sha256 arm:   "b539afe6359e6fcb772cd3b735e4671ac2818524a7a525251bc8eb64d043c4a9",
+         intel: "15484ce1f055f9faede5d53994db718ed0ed7712ac9d84c5e3c55df5e580fe36"
 
   url "https://github.com/diegosouzapw/OmniRoute/releases/download/v#{version}/OmniRoute-#{version}#{arch}.dmg"
   name "OmniRoute"
