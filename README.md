@@ -17,6 +17,13 @@ Send data removal requests to data brokers ([eraser.drumandbytes.dev](https://er
 brew install --cask drumandbytes/tap/eraser
 ```
 
+### dnb-cal
+Writes Apple Calendar events to a file, for scripts and helpers that can't ask for Calendar access themselves. Requires Apple Silicon and macOS Ventura or later.
+
+```bash
+brew install --cask drumandbytes/tap/dnb-cal
+```
+
 ### music-router
 Stops Music.app auto-launch and routes media keys elsewhere. Requires Apple Silicon and macOS Ventura or later.
 
