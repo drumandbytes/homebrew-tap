@@ -1,6 +1,6 @@
 cask "dnb-cal" do
-  version "1.0.0"
-  sha256 "b2877a2e9f543c2cf5795394450076bd08a8529e17916b5db4117df617262b85"
+  version "1.0.1"
+  sha256 "8e5f9031d402e93c60d076297d4af6bb42d653d7d95737da3ebfb561d180e618"
 
   url "https://github.com/drumandbytes/dnb-cal/releases/download/v#{version}/DnbCal-#{version}.zip"
   name "DnbCal"
