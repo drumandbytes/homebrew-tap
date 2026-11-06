@@ -30,10 +30,3 @@ Stops Music.app auto-launch and routes media keys elsewhere. Requires Apple Sili
 ```bash
 brew install --cask drumandbytes/tap/music-router
 ```
-
-### omniroute
-Unified AI gateway and model router ([omniroute.online](https://omniroute.online))
-
-```bash
-brew install --cask drumandbytes/tap/omniroute
-```
