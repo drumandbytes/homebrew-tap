@@ -6,25 +6,25 @@ cask "eraser" do
     end
   end
 
-  version "2.0.0"
+  version "2.0.1"
 
   on_macos do
     on_arm do
-      sha256 "c4915ec4c33e1bc52217a756c4d6a7837b1f117e1d235cdaa518eff47e995138"
+      sha256 "90647c31f742b56ae445d9cc969aa0efc6a96fb7b9164a51810993b828b6aa7e"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "eccaf791a11ab5c3cf05297227b39287b4c665a63a975e84644c5b83921bbcdb"
+      sha256 "f6ec230c6934aa4fd2dc2c3d7c7e4876c32b5583e8327f0e5dd71ded81dc6568"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "437af56d161348c9489c5803bec4ce53c7f807bed2c227e34a069bfcf9d4f6c0"
+      sha256 "6bca1017d939375fd85d560ca4acfadb7d2b47109098c3bb9f1640850f868e09"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "e78defcd0d9729111a5287f6eaa4c430b502ca50bd03abb27b49c6ae5d87448b"
+      sha256 "251acd0ccfc4937b17e8bc979ab4a44b67e534388c606ada73329b20c602301d"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -39,7 +39,7 @@ cask "eraser" do
 
   binary "eraser"
 
-  # No zap stanza required
+  zap :not_required
 
   caveats <<~EOS
     Config lives at ~/.eraser/config.yaml. Start with:
