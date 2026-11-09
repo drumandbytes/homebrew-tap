@@ -6,25 +6,25 @@ cask "eraser" do
     end
   end
 
-  version "2.2.0"
+  version "2.2.1"
 
   on_macos do
     on_arm do
-      sha256 "eafd75cf6e88d9e624ba17ca149a6c2664c13dec677b210b44050e9366b06048"
+      sha256 "a732618b6dfa1ec38a0c39b76a5c4395bd2ca114e4f7c98a06df34f626525380"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "bf66b74eac331b1b7bc4b0f77f683fa00697b31597057764c3c4cda098cdf036"
+      sha256 "81a4cc4bc7acba8ba01982c32330221a1a0b34b769fd93829ee9f8caf3080552"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "f0a4c6652261f32fdd37c8f87105ca0f0855e35c6b143d23375dd2b3cd20b4c5"
+      sha256 "a2c7c60dc7544a630b5ab9a0623b565cc6e6e7608761d6c7a110e0e7e1d62f56"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "871e7edb93d769ef545ffa11e9c571323f2071b602bd44c4bd7828710c93de03"
+      sha256 "558b06f04961b4e5d2b3e3103097aa6a4ae3ec3462d30827468c14097ae1c637"
       url "https://github.com/drumandbytes/eraser/releases/download/v#{version}/eraser_#{version}_linux_amd64.tar.gz"
     end
   end
