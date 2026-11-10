@@ -10,11 +10,11 @@ brew tap drumandbytes/tap
 
 ## Available Casks
 
-### eraser
-Send data removal requests to data brokers ([eraser.drumandbytes.dev](https://eraser.drumandbytes.dev/?ref=homebrew-tap-readme))
+### delistd
+Send data removal requests to data brokers ([delistd.dev](https://delistd.dev/?ref=homebrew-tap-readme)). Formerly `eraser`: `brew upgrade` moves existing installs to this cask, and `brew install drumandbytes/tap/eraser` resolves to it.
 
 ```bash
-brew install --cask drumandbytes/tap/eraser
+brew install --cask drumandbytes/tap/delistd
 ```
 
 ### dnb-cal
