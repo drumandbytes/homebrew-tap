@@ -7,25 +7,25 @@ cask "delistd" do
     end
   end
 
-  version "2.3.1"
+  version "2.3.2"
 
   on_macos do
     on_arm do
-      sha256 "a53a38957d22bba558590ac58f528659285a52f9afd1e90ff8aafc6f9ae78897"
+      sha256 "1da3426aad9da1a1ef3d8dfcd2cd88575cab703a5baad13325b67d4d63d27884"
       url "https://github.com/drumandbytes/delistd/releases/download/v#{version}/delistd_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "e8a7ba23de9f5254615acda24ea7d0ab45313843c912402f513bb173269a5fff"
+      sha256 "a6b0d4d33c99b00cccfc66ccbe2f4f7db3f41116146d5961477de9f6ce4d1010"
       url "https://github.com/drumandbytes/delistd/releases/download/v#{version}/delistd_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "8ea3011240fbe666331ad439e76c0dfc6ddb942d7a6cadfb66c178716373fa56"
+      sha256 "4dbbfcda1e1d23cb5605969d187676c5fbfa4f41da666c29da70d7a7df5d3a1e"
       url "https://github.com/drumandbytes/delistd/releases/download/v#{version}/delistd_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "df23a4292a81b1d2a9416fd066bc1cde7fab9b6bdd37c3a1c811b63863756747"
+      sha256 "dac35bffca4acdddd9fc74a6cac433de7d8ccf7188aa9b2811c8feb8683b0525"
       url "https://github.com/drumandbytes/delistd/releases/download/v#{version}/delistd_#{version}_linux_amd64.tar.gz"
     end
   end
