@@ -1,6 +1,6 @@
 cask "music-router" do
-  version "1.1.0"
-  sha256 "148feb49281db74a8b8b777b39dbe098d7d91869fc5625be83156b284062e1a9"
+  version "1.1.1"
+  sha256 "f0c442f2910ad1e97398237af7a62da3520819908f5ca9a8c91ed9801f146b07"
 
   url "https://github.com/drumandbytes/music-router/releases/download/v#{version}/MusicRouter-#{version}.zip"
   name "Music Router"
