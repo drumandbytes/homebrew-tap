@@ -8,10 +8,10 @@ cask "music-router" do
   homepage "https://github.com/drumandbytes/music-router"
 
   depends_on arch: :arm64
-  depends_on formula: "media-control"
   depends_on macos: :ventura
 
   app "MusicRouter.app"
+  binary "#{appdir}/MusicRouter.app/Contents/Resources/musicrouter-media"
 
   zap trash: "~/Library/Preferences/dev.drumandbytes.musicrouter.plist"
 end
