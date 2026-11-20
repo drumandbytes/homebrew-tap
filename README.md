@@ -10,6 +10,13 @@ brew tap drumandbytes/tap
 
 ## Available Casks
 
+### airplay-screen
+Starts and stops AirPlay screen mirroring from the command line, with the menu bar hidden: `airplay-screen list | start <name> | stop | status`. Needs Accessibility permission for the app you run it from. Requires Apple Silicon and macOS Ventura or later.
+
+```bash
+brew install --cask drumandbytes/tap/airplay-screen
+```
+
 ### delistd
 Send data removal requests to data brokers ([delistd.dev](https://delistd.dev/?ref=homebrew-tap-readme)). Formerly `eraser`: `brew upgrade` moves existing installs to this cask, and `brew install drumandbytes/tap/eraser` resolves to it.
 
