@@ -4,7 +4,7 @@ cask "airplay-screen" do
 
   url "https://github.com/drumandbytes/airplay-screen/releases/download/v#{version}/AirplayScreen-#{version}.zip"
   name "AirplayScreen"
-  desc "Start and stop AirPlay screen mirroring from the command line"
+  desc "Start and stop AirPlay screen mirroring from the command-line"
   homepage "https://github.com/drumandbytes/airplay-screen"
 
   depends_on arch: :arm64
